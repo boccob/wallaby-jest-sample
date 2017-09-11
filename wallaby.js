@@ -1,16 +1,13 @@
 module.exports = function () {
 
   return {
-    files: ['sum.js'],
+    files: ['src/sum.js'],
 
     tests: ['__tests__/*.js'],
 
     env: {
       type: 'node',
-      runner: 'node',
-      params: {
-        runner: '--harmony'
-      }
+      runner: 'node'
     },
 
     testFramework: 'jest'

@@ -10,12 +10,12 @@ module.exports = function () {
       runner: 'node'
     },
 
-    testFramework: 'jest'
+    testFramework: 'jest',
 
-    //setup: function (wallaby) {
-    //  wallaby.testFramework.configure({
-    //    // https://facebook.github.io/jest/docs/api.html#config-options
-    //  });
-    //}
+    setup: function (wallaby) {
+      const jestConfig = require('./package.json').jest;
+      jestConfig.modulePaths = jestConfig.modulePaths.map(p => p.replace('<rootDir>', wallaby.projectCacheDir));
+      wallaby.testFramework.configure(jestConfig);
+    }
   };
 };
